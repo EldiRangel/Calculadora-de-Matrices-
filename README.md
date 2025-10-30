@@ -1,6 +1,4 @@
-# Calculadora-de-Matrices-
-
-# Calculadora de Matrices Interactiva
+# Calculadora de Matrices 
 
 ¡Bienvenido a la Calculadora de Matrices! Esta web permite realizar operaciones con matrices cuadradas.
 
