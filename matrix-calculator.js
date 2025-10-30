@@ -16,6 +16,7 @@ class MatrixCalculator {
     }
     
     setupEventListeners() {
+       
         const sizeSelector = document.getElementById('matrix-size');
         if (sizeSelector) {
             sizeSelector.addEventListener('change', (e) => {
@@ -30,13 +31,14 @@ class MatrixCalculator {
                 this.generateRandomMatrices();
             });
         }
-     
+        
         const clearBtn = document.getElementById('clear-matrices');
         if (clearBtn) {
             clearBtn.addEventListener('click', () => {
                 this.clearMatrices();
             });
         }
+        
         
         const operationsGrid = document.querySelector('.operations-grid');
         if (operationsGrid) {
@@ -75,7 +77,7 @@ class MatrixCalculator {
                 input.dataset.row = i;
                 input.dataset.col = j;
                 
-               
+                
                 if (i === j) {
                     input.value = '1';
                 } else {
@@ -129,7 +131,7 @@ class MatrixCalculator {
         console.log('Generando matrices aleatorias...');
         const size = this.matrixSize;
         
-        
+       
         const matrixA = [];
         for (let i = 0; i < size; i++) {
             matrixA[i] = [];
@@ -158,7 +160,8 @@ class MatrixCalculator {
     clearMatrices() {
         console.log('Limpiando matrices...');
         const size = this.matrixSize;
-
+        
+        
         const identityA = [];
         for (let i = 0; i < size; i++) {
             identityA[i] = [];
@@ -166,6 +169,7 @@ class MatrixCalculator {
                 identityA[i][j] = i === j ? 1 : 0;
             }
         }
+        
         
         const identityB = [];
         for (let i = 0; i < size; i++) {
@@ -421,5 +425,113 @@ class MatrixCalculator {
         
         return identity;
     }
+    
+    showScalarInput() {
+        const scalarInput = document.getElementById('scalar-input');
+        if (scalarInput) {
+            scalarInput.classList.remove('hidden');
+            
+            if (this.scalarListener) {
+                document.getElementById('scalar-value').removeEventListener('input', this.scalarListener);
+            }
+            
+            this.scalarListener = () => {
+                const k = parseFloat(document.getElementById('scalar-value').value) || 0;
+                const result = this.scalarMultiply(k, this.matrixA);
+                this.showResult(k + ' × A', result);
+            };
+            
+            const scalarValue = document.getElementById('scalar-value');
+            if (scalarValue) {
+                scalarValue.addEventListener('input', this.scalarListener);
+                this.scalarListener();
+            }
+        }
+    }
+    
+    showResult(operation, matrix) {
+        const resultSection = document.getElementById('result-section');
+        const resultMatrix = document.getElementById('result-matrix');
+        
+        if (resultSection && resultMatrix) {
+            resultSection.classList.remove('hidden');
+            
+            if (matrix.length === 1 && matrix[0].length === 1) {
+                const value = this.formatNumber(matrix[0][0]);
+                resultMatrix.innerHTML = `<p><strong>${operation}:</strong> ${value}</p>`;
+            } else {
+                let html = `<p><strong>${operation}:</strong></p>`;
+                html += '<table class="matrix-table">';
+                
+                for (let i = 0; i < matrix.length; i++) {
+                    html += '<tr>';
+                    for (let j = 0; j < matrix[i].length; j++) {
+                        const value = this.formatNumber(matrix[i][j]);
+                        html += `<td>${value}</td>`;
+                    }
+                    html += '</tr>';
+                }
+                
+                html += '</table>';
+                resultMatrix.innerHTML = html;
+            }
+        }
+    }
+    
+    showDeterminantResult(det) {
+        const resultSection = document.getElementById('result-section');
+        const resultMatrix = document.getElementById('result-matrix');
+        
+        if (resultSection && resultMatrix) {
+            resultSection.classList.remove('hidden');
+            const value = this.formatNumber(det);
+            resultMatrix.innerHTML = `<p><strong>det(A):</strong></p><div class="determinant-result">${value}</div>`;
+        }
+    }
+    
+    formatNumber(value) {
+        if (Math.abs(value) < 1e-10) return '0';
+        if (Number.isInteger(value)) return value.toString();
+        
+        const rounded = Math.round(value * 10000) / 10000;
+        return parseFloat(rounded.toFixed(4)).toString();
+    }
+    
+    hideResult() {
+        const resultSection = document.getElementById('result-section');
+        const scalarInput = document.getElementById('scalar-input');
+        
+        if (resultSection) resultSection.classList.add('hidden');
+        if (scalarInput) scalarInput.classList.add('hidden');
+    }
+    
+    showAlert(message, type) {
+        const alertContainer = document.getElementById('alert-container');
+        if (alertContainer) {
+            const alert = document.createElement('div');
+            alert.className = `alert alert-${type}`;
+            alert.textContent = message;
+            alertContainer.appendChild(alert);
+            
+            setTimeout(() => {
+                if (alert.parentNode) {
+                    alert.remove();
+                }
+            }, 5000);
+        }
+    }
+    
+    clearAlerts() {
+        const alertContainer = document.getElementById('alert-container');
+        if (alertContainer) {
+            alertContainer.innerHTML = '';
+        }
+    }
+}
 
+
+document.addEventListener('DOMContentLoaded', function() {
+    console.log('DOM cargado, inicializando calculadora...');
+    new MatrixCalculator();
+});
     
