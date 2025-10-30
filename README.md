@@ -30,8 +30,4 @@ Esta calculadora está construida con tecnologías web estándar:
 - CSS3 para el diseño y colores
 - JavaScript para todas las operaciones matemáticas
 
-
-
----
-
 *¿Tienes preguntas o sugerencias? ¡Este proyecto está diseñado para ser útil y seguir mejorando!*
