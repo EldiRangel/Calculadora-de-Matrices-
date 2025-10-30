@@ -68,6 +68,219 @@ h1 {
     border-bottom: 2px solid var(--light-color);
 }
 
+.matrix-controls {
+    display: flex;
+    flex-wrap: wrap;
+    gap: 10px;
+    margin-bottom: 15px;
+    align-items: center;
+}
+
+.matrix-controls label {
+    font-weight: bold;
+    color: var(--dark-color);
+}
+
+.matrix-controls button {
+    padding: 8px 15px;
+    background-color: var(--secondary-color);
+    color: white;
+    border: none;
+    border-radius: var(--border-radius);
+    cursor: pointer;
+    transition: background-color 0.3s;
+}
+
+.matrix-controls button:hover {
+    background-color: #2980b9;
+}
+
+.matrix-controls select, .matrix-controls input {
+    padding: 8px;
+    border: 1px solid #ddd;
+    border-radius: var(--border-radius);
+}
+
+.matrix-container {
+    display: flex;
+    flex-wrap: wrap;
+    gap: 20px;
+    justify-content: center;
+    margin-bottom: 20px;
+}
+
+.matrix {
+    border: 1px solid #ddd;
+    border-radius: var(--border-radius);
+    padding: 15px;
+    background-color: #f9f9f9;
+    min-width: 180px;
+}
+
+.matrix h3 {
+    text-align: center;
+    margin-bottom: 10px;
+    color: var(--primary-color);
+}
+
+.matrix-grid {
+    display: grid;
+    gap: 5px;
+    margin-bottom: 10px;
+}
+
+.matrix-cell {
+    width: 50px;
+    height: 40px;
+    text-align: center;
+    border: 1px solid #ccc;
+    border-radius: 4px;
+    font-size: 16px;
+}
+
+.matrix-cell:focus {
+    border-color: var(--secondary-color);
+    outline: none;
+}
+
+.operations-grid {
+    display: grid;
+    grid-template-columns: repeat(auto-fill, minmax(150px, 1fr));
+    gap: 10px;
+    margin-bottom: 20px;
+}
+
+.operation-btn {
+    padding: 12px;
+    background-color: var(--secondary-color);
+    color: white;
+    border: none;
+    border-radius: var(--border-radius);
+    cursor: pointer;
+    font-size: 16px;
+    transition: all 0.3s;
+}
+
+.operation-btn:hover {
+    background-color: #2980b9;
+    transform: translateY(-2px);
+}
+
+.operation-btn:disabled {
+    background-color: #bdc3c7;
+    cursor: not-allowed;
+    transform: none;
+}
+
+.result-section {
+    margin-top: 20px;
+    padding: 15px;
+    background-color: #f9f9f9;
+    border-radius: var(--border-radius);
+    border: 1px solid #ddd;
+}
+
+.result-section h3 {
+    color: var(--primary-color);
+    margin-bottom: 10px;
+}
+
+.result-matrix {
+    display: inline-block;
+    margin-top: 10px;
+}
+
+.alert {
+    padding: 10px 15px;
+    border-radius: var(--border-radius);
+    margin: 10px 0;
+}
+
+.alert-error {
+    background-color: #ffebee;
+    color: var(--accent-color);
+    border: 1px solid #ffcdd2;
+}
+
+.alert-success {
+    background-color: #e8f5e9;
+    color: var(--success-color);
+    border: 1px solid #c8e6c9;
+}
+
+.hidden {
+    display: none;
+}
+
+footer {
+    text-align: center;
+    margin-top: 30px;
+    padding: 20px;
+    color: var(--dark-color);
+    font-size: 0.9rem;
+}
+
+.scalar-input {
+    margin: 10px 0;
+    display: flex;
+    align-items: center;
+    gap: 10px;
+}
+
+.scalar-input label {
+    font-weight: bold;
+    color: var(--dark-color);
+}
+
+.scalar-input input {
+    width: 100px;
+    padding: 8px;
+    border: 1px solid #ddd;
+    border-radius: var(--border-radius);
+}
+
+.matrix-table {
+    border-collapse: collapse;
+    margin-top: 10px;
+}
+
+.matrix-table td {
+    border: 1px solid #ccc;
+    padding: 8px;
+    text-align: center;
+    min-width: 50px;
+    background-color: white;
+}
+
+.determinant-result {
+    font-size: 1.2rem;
+    font-weight: bold;
+    color: var(--primary-color);
+    margin-top: 10px;
+    padding: 10px;
+    background-color: white;
+    border-radius: 8px;
+    display: inline-block;
+}
+
+@media (max-width: 768px) {
+    .matrix-container {
+        flex-direction: column;
+        align-items: center;
+    }
+    
+    .operations-grid {
+        grid-template-columns: repeat(auto-fill, minmax(130px, 1fr));
+    }
+    
+    .matrix-controls {
+        justify-content: center;
+    }
+    
+    h1 {
+        font-size: 1.8rem;
+    }
+}
 
 
 
