@@ -7,6 +7,77 @@
     <link rel="stylesheet" href="styles.css">
 </head>
 <body>
-
+ <div class="container">
+        <header>
+            <h1>Calculadora de Matrices Interactiva</h1>
+            <p class="subtitle">Operaciones con matrices cuadradas de 2×2 a 10×10</p>
+        </header>
+        
+        <div class="main-content">
+            <section class="input-section">
+                <h2>Configuración de Matrices</h2>
+                
+                <div class="matrix-controls">
+                    <label for="matrix-size">Tamaño:</label>
+                    <select id="matrix-size">
+                        <option value="2">2×2</option>
+                        <option value="3" selected>3×3</option>
+                        <option value="4">4×4</option>
+                        <option value="5">5×5</option>
+                        <option value="6">6×6</option>
+                        <option value="7">7×7</option>
+                        <option value="8">8×8</option>
+                        <option value="9">9×9</option>
+                        <option value="10">10×10</option>
+                    </select>
+                    <button id="generate-random">Aleatorio</button>
+                    <button id="clear-matrices">Limpiar</button>
+                </div>
+                
+                <div class="matrix-container">
+                    <div class="matrix">
+                        <h3>Matriz A</h3>
+                        <div id="matrix-a" class="matrix-grid"></div>
+                    </div>
+                    
+                    <div class="matrix">
+                        <h3>Matriz B</h3>
+                        <div id="matrix-b" class="matrix-grid"></div>
+                    </div>
+                </div>
+                
+                <div id="scalar-input" class="scalar-input hidden">
+                    <label for="scalar-value">Valor escalar (k):</label>
+                    <input type="number" id="scalar-value" step="0.1" value="1">
+                </div>
+            </section>
+            
+            <section class="operations-section">
+                <h2>Operaciones</h2>
+                
+                <div class="operations-grid">
+                    <button class="operation-btn" data-operation="sum">A + B</button>
+                    <button class="operation-btn" data-operation="subtract">A - B</button>
+                    <button class="operation-btn" data-operation="multiply">A × B</button>
+                    <button class="operation-btn" data-operation="scalar">k × A</button>
+                    <button class="operation-btn" data-operation="transpose">A<sup>T</sup></button>
+                    <button class="operation-btn" data-operation="determinant">det(A)</button>
+                    <button class="operation-btn" data-operation="inverse">A<sup>-1</sup></button>
+                    <button class="operation-btn" data-operation="identity">I<sub>n</sub></button>
+                </div>
+                
+                <div id="alert-container"></div>
+                
+                <div id="result-section" class="result-section hidden">
+                    <h3>Resultado</h3>
+                    <div id="result-matrix" class="result-matrix"></div>
+                </div>
+            </section>
+        </div>
+        
+        <footer>
+            <p>Proyecto: Calculadora de Matrices ER</p>
+        </footer>
+    </div>
 </body>
 </html>
