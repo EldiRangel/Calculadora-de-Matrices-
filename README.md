@@ -24,8 +24,8 @@
 ## Tecnología detrás del proyecto
 
 Esta calculadora está construida con tecnologías web estándar:
-- HTML5 para la estructura
-- CSS3 para el diseño y colores
+- HTML para la estructura
+- CSS  para el diseño y colores
 - JavaScript para todas las operaciones matemáticas
 
 *¿Tienes preguntas o sugerencias? ¡Este proyecto está diseñado para ser útil y seguir mejorando!*
